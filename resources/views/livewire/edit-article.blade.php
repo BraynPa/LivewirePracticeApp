@@ -1,8 +1,10 @@
 <div class="m-auto w-1/2 mb-4" >
-    <h3 class="text-lg text-gray-200 mb-3">Edit Article</h3>
+    <h3 class="text-lg text-gray-400 mb-3">Edit Article</h3>
     <form wire:submit="save">
         <div class="mb-3">
-            <label for="article-title" class="block">Title</label>
+            <label for="article-title" class="block" wire:dirty.class="text-orange-400" wire:target="form.title">
+                Title<span wire:dirty wire:target="form.title">*</span>
+            </label>
             <input 
                 type="text" 
                 class="p-2 w-full border rounded-md bg-gray-700 text-white" 
@@ -13,7 +15,9 @@
             </div>
         </div>
         <div class="mb-3">
-            <label for="article-content" class="block">Content</label>
+            <label for="article-content" class="block"wire:dirty.class="text-orange-400" wire:target="form.content">
+                Content<span wire:dirty wire:target="form.content">*</span>
+            </label>
             <textarea 
                 id="article-content" 
                 class="p-2 w-full border rounded-md bg-gray-700 text-white" 
@@ -24,17 +28,19 @@
             </div>
         </div>
         <div class="mb-3">
-            <label class="flex items-center">
+            <label class="flex items-center" wire:dirty.class="text-orange-400" wire:target="form.published">
                 <input type="checkbox" name="published" 
                     class="mr-2" 
                     wire:model.boolean="form.published"
                 >
-                Published
+                Published<span wire:dirty wire:target="form.published">*</span>
             </label>
         </div>
         <div class="mb-3">
             <div>
-                <div class="mb-2">Notification Options</div>
+                <div class="mb-2" wire:dirty.class="text-orange-400" wire:target="form.notifications">
+                    Notification Options<span wire:dirty wire:target="form.notifications">*</span>
+                </div>
                 <div class="flex gap-6 mb-3">
                     <label class="flex items-center">
                         <input type="radio" class="mr-2" value="true" wire:model.boolean="form.allowNotifications"
@@ -68,8 +74,11 @@
         </div>
         <div class="mb-3">
             <button
-                class="text-gray-200 p-2 bg-indigo-700 hover:bg-indigo-900 rounded-sm"
+                class="text-gray-200 p-2 bg-blue-700 rounded-sm disabled:opacity-75 disabled:bg-blue-300"
                 type="submit"
+                wire:dirty.class="hover:bg-blue-900"
+                wire:dirty.remove.attr="disabled"
+                disabled
             >
                 Save
             </button>
