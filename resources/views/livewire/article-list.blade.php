@@ -1,13 +1,28 @@
 <div class="m-auto w-1/2 mb-4">
-    <div class="mb-3">
+    <div class="mb-3 flex justify-between items-center">
         <a href="/dashboard/articles/create" 
-            class="text-gray-200 p-2 bg-indigo-700 hover:bg-indigo-900 rounded-sm" 
+            class="text-blue-500 hover:text-blue-300" 
             wire:navigate
         >
             Create Article
         </a>
+        <div>
+            <button class="text-gray-200 p-2 bg-blue-700 hover:bg-blue-900 rounded-sm"
+                wire:click="showAll()"
+            >
+                Show all
+            </button>
+            <button class="text-gray-200 p-2 bg-blue-700 hover:bg-blue-900 rounded-sm"
+                wire:click="showPublished()"
+            >
+                Show Published (<livewire:published-count placeholder-text="loanding"/>)
+            </button>
+        </div>
     </div>
-    <table>
+    <div class="my-3">
+        {{ $articles->links(data: ['scrollTo' => false]) }}
+    </div>
+    <table class="w-full">
         <thead class="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
                 <th class="px-6 py-3">Title</th>
@@ -37,4 +52,7 @@
             @endforeach
         </tbody>
     </table>
+    <div class="mt-3">
+        {{ $articles->links(data: ['scrollTo' => false]) }}
+    </div>
 </div>
