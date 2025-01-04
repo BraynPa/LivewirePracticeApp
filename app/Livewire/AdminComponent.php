@@ -9,8 +9,8 @@ use Livewire\Component;
 
 class AdminComponent extends Component
 {
-    public function render()
+    /* public function render()
     {
         return view('livewire.dashboard');
-    }
+    } */
 }
