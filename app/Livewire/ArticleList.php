@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Article;
+use Livewire\Attributes\Session;
 use Livewire\Attributes\Computed;
 use Livewire\Attributes\Title;
 use Livewire\Component;
@@ -12,6 +13,7 @@ use Livewire\WithPagination;
 class ArticleList extends AdminComponent
 {
     use WithPagination;
+    #[Session]
     public $showOnlyPublished = false;
     #[Computed]
     public function articles(){
@@ -29,12 +31,8 @@ class ArticleList extends AdminComponent
         unset($this->articles); 
         $this->dispatch('refreshPublishedCount');
     }
-    public function showAll(){
-        $this->showOnlyPublished = false;
-        $this->resetPage(pageName: 'articles-page');
-    }
-    public function showPublished(){
-        $this->showOnlyPublished = true;
+    public function togglePublished($showOnlyPublished){
+        $this->showOnlyPublished = $showOnlyPublished;
         $this->resetPage(pageName: 'articles-page');
     }
 
