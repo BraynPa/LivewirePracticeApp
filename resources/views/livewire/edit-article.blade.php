@@ -15,6 +15,26 @@
             </div>
         </div>
         <div class="mb-3">
+            <label for="article-photo" class="block">
+                Photo
+            </label>
+            <div class="flex items-center">
+                <input type="file"
+                    wire:model="form.photo"
+                >
+                <div>
+                    @if ($form->photo)
+                        <img src="{{ $form->photo->temporaryUrl() }}" alt="" class="w-1/2">
+                    @elseif ($form->photo_path)
+                        <img src="{{ Storage::url($form->photo_path) }}" alt="" class="w-1/2">
+                    @endif
+                </div>
+            </div>
+            <div>
+                @error('photo')<span class="text-red-600">{{$message}}</span>@enderror
+            </div>
+        </div>
+        <div class="mb-3">
             <label for="article-content" class="block"wire:dirty.class="text-orange-400" wire:target="form.content">
                 Content<span wire:dirty wire:target="form.content">*</span>
             </label>
@@ -74,11 +94,8 @@
         </div>
         <div class="mb-3">
             <button
-                class="text-gray-200 p-2 bg-blue-700 rounded-sm disabled:opacity-75 disabled:bg-blue-300"
+                class="text-gray-200 p-2 bg-blue-700 rounded-sm hover:bg-blue-900"
                 type="submit"
-                wire:dirty.class="hover:bg-blue-900"
-                wire:dirty.remove.attr="disabled"
-                disabled
             >
                 Save
             </button>

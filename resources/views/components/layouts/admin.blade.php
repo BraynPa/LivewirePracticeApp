@@ -21,8 +21,8 @@
     </head>
     <body class="font-sans antialiased bg-black text-white/50" x-data x-on:click="$dispatch('search:clear-results')">
         <div class="bg-gray-50 text-black/50 bg-black text-white/50">
-            <div class="relative flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-                <div class="relative w-full max-w-2xl  lg:max-w-7xl">
+            <div class="relative flex flex-col bg-black items-center justify-center selection:bg-[#FF2D20] selection:text-white">
+                <div class="relative w-full max-w-2xl bg-black lg:max-w-7xl">
                     <nav class="w-full bg-gray-900">
                         <div class="max-w-screen-xl flex items-center justify-between mx-auto p-4">
                             <div class="w-full block" id="navbar-default">

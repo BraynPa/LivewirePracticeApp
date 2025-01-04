@@ -4,9 +4,11 @@ namespace App\Livewire;
 
 use App\Livewire\Forms\ArticleForm;
 use App\Models\Article;
+use Livewire\WithFileUploads;
 
 class EditArticle extends AdminComponent
 {
+    use WithFileUploads;
     public ArticleForm $form;
 
 
