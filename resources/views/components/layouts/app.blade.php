@@ -30,9 +30,11 @@
                                     <li>
                                        <a href="/" class="block py-2 px-3 text-blue-500">Home</a>
                                     </li>
+                                    @auth
                                     <li>
                                        <a href="/dashboard" class="block py-2 px-3 text-blue-500">Admin Dashbord</a>
                                     </li>
+                                    @endauth
                                 </ul>
                             </div>
                             <div class="w-1/2">
