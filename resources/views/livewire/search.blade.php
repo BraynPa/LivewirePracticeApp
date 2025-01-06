@@ -11,5 +11,9 @@
             
         </div>
     </form>
-    <livewire:SearchResults :results="$results" :show="!empty($searchText)">
+    @if (!empty($searchText))
+    <div wire:transition.in.duration.1000ms>
+        <livewire:SearchResults :results="$results">
+    </div>
+    @endif
 </div>
